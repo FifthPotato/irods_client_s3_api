@@ -309,7 +309,7 @@ std::optional<std::string> irods::s3::authentication::authenticates(
 		const auto credentials_iter = params.find("X-Amz-Credential");
 		if (params.end() == credentials_iter) {
 			logging::debug("No Authorization header or X-Amz-Credential parameter found.");
-			return std::nullopt;
+			return std::string("anonymous");
 		}
 		boost::split(credential_fields, (*credentials_iter).value, boost::is_any_of("/"));
 
